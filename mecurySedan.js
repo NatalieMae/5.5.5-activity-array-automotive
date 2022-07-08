@@ -14,14 +14,24 @@ class Car extends vehicle {
     }
 
     loadPassenger(num) {
-
+        if (this.passanger < this.maximumPassengers) {
+            if ((num + this.passenger) <= this.maximumPassengers) {
+                this.passenger = num;
+                return this.passenger;
+            } else {
+                console.log(this.model + " " + this.make + " If you didn't fit in you gotta walk or call an Uber! ")
+            }
+            // else {
+            //     console.log(this.model + " " + this.make + " is full");
+            // }
+        }
     }
 
     startCar() {
 
     }
 
-    scheduleService(mileage) {
+    checkService() {
         if (this.mileage > 30000) {
             this.scheduleService = true
             return this.scheduleService;
@@ -30,7 +40,12 @@ class Car extends vehicle {
     }
 }
 //this shows how to call from this module...
-let v = new VehicleModule.Vehicle("Mecury", "Sedan", "1965", "color", "mileage");
-console.log(v.make)
+let myCar = new Car ("Hyundai", "Sonata", "2021", "color", "mileage");
 
-Car()
+
+myCar.start()
+myCar.loadPassenger()
+myCar.stop()
+myCar.checkService()
+
+console.log(myCar)
